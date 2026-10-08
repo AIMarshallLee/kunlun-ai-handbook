@@ -60,8 +60,9 @@ def md_to_html(md_text):
 
         # 表格处理
         if stripped.startswith('|') and stripped.endswith('|'):
-            # 分割单元格
-            cells = [c.strip() for c in stripped.strip('|').split('|')]
+            # 安全切除首尾竖线
+            inner = stripped[1:-1]
+            cells = [c.strip() for c in inner.split('|')]
             # 检查是否为表头分隔行 (如 | :---: | :--- |)
             if all(re.match(r'^:?-+:?$', c) for c in cells):
                 table_has_header = True
@@ -98,6 +99,9 @@ def md_to_html(md_text):
 
         # 一级卷标题
         if line.startswith('# '):
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
             if in_entry:
                 html_lines.append('</div>')
                 in_entry = False
@@ -107,6 +111,9 @@ def md_to_html(md_text):
 
         # 二级模块标题
         if line.startswith('## '):
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
             if in_entry:
                 html_lines.append('</div>')
                 in_entry = False
@@ -114,9 +121,12 @@ def md_to_html(md_text):
             html_lines.append(f'<h2 class="module-title">{html.escape(title)}</h2>')
             continue
 
-        # 三级条目动作标题 (### 001. xxx)
-        m_item = re.match(r'^###\s+(\d+)\.\s+(.+)', line)
-        if m_item:
+        # 三级条目动作标题 (仅严格匹配 ### 001. xxx 到 520)
+        m_item = re.match(r'^###\s+(\d{3})\.\s+(.+)', line)
+        if m_item and 1 <= int(m_item.group(1)) <= 520:
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
             if in_entry:
                 html_lines.append('</div>')
             num, title = m_item.groups()
@@ -128,6 +138,30 @@ def md_to_html(md_text):
             html_lines.append(f'  <div class="entry-header"><span class="entry-num">#{num_int:03d}</span><span class="entry-title">{html.escape(title)}</span></div>')
             continue
 
+        # 普通三级小节标题 (### xxx，如附录小节)
+        if line.startswith('### '):
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
+            if in_entry:
+                html_lines.append('</div>')
+                in_entry = False
+            title = line[4:].strip()
+            html_lines.append(f'<h3 class="section-subhead">{_format_inline(title)}</h3>')
+            continue
+
+        # 普通四级小节标题 (#### xxx)
+        if line.startswith('#### '):
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
+            if in_entry:
+                html_lines.append('</div>')
+                in_entry = False
+            title = line[5:].strip()
+            html_lines.append(f'<h4 class="section-subhead-4">{_format_inline(title)}</h4>')
+            continue
+
         # 引用块
         if line.startswith('> '):
             quote = line[2:].strip()
@@ -136,6 +170,12 @@ def md_to_html(md_text):
 
         # 横线
         if stripped in ['---', '***', '___']:
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
+            if in_entry:
+                html_lines.append('</div>')
+                in_entry = False
             html_lines.append('<hr class="divider" />')
             continue
 
@@ -370,34 +410,54 @@ def compile_book():
     border-radius: 0 6px 6px 0;
   }}
 
+  /* 小节标题 (用于附录与序言子标题) */
+  .section-subhead {{
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }}
+  .section-subhead-4 {{
+    font-size: 10pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }}
+
   /* 表格排版 (速查表/附录表) */
   .table-container {{
     width: 100%;
-    margin: 20px 0;
+    margin: 16px 0 24px 0;
     overflow-x: auto;
     page-break-inside: auto;
   }}
   .data-table {{
     width: 100%;
     border-collapse: collapse;
-    font-size: 9pt;
+    font-size: 8.5pt;
     line-height: 1.45;
     background: #ffffff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    border-radius: 6px;
-    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
   }}
   .data-table th {{
     background: #1e293b;
     color: #ffffff;
     font-weight: 700;
-    padding: 10px 12px;
+    padding: 8px 10px;
     text-align: left;
-    border-top: none;
+    border: 1px solid #334155;
+    font-size: 8.5pt;
+    white-space: nowrap;
   }}
   .data-table td {{
-    padding: 9px 12px;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 7px 10px;
+    border: 1px solid #e2e8f0;
     color: #334155;
     vertical-align: top;
   }}
@@ -407,11 +467,23 @@ def compile_book():
   .data-table tr:hover {{
     background: #f1f5f9;
   }}
-  .data-table td:first-child {{
-    text-align: center;
-    font-weight: 700;
-    color: #2563eb;
-    width: 50px;
+
+  /* 代码块与模板 */
+  pre {{
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 8pt;
+    line-height: 1.45;
+    overflow-x: auto;
+    font-family: Consolas, "Courier New", monospace;
+    page-break-inside: avoid;
+    margin: 14px 0;
+  }}
+  code {{
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 8.5pt;
   }}
 
   /* 超链接样式与直达跳转 */

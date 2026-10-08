@@ -110,34 +110,54 @@
     border-radius: 0 6px 6px 0;
   }
 
+  /* 小节标题 (用于附录与序言子标题) */
+  .section-subhead {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1e293b;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }
+  .section-subhead-4 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
   /* 表格排版 (速查表/附录表) */
   .table-container {
     width: 100%;
-    margin: 20px 0;
+    margin: 16px 0 24px 0;
     overflow-x: auto;
     page-break-inside: auto;
   }
   .data-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 9pt;
+    font-size: 8.5pt;
     line-height: 1.45;
     background: #ffffff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    border-radius: 6px;
-    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
   }
   .data-table th {
     background: #1e293b;
     color: #ffffff;
     font-weight: 700;
-    padding: 10px 12px;
+    padding: 8px 10px;
     text-align: left;
-    border-top: none;
+    border: 1px solid #334155;
+    font-size: 8.5pt;
+    white-space: nowrap;
   }
   .data-table td {
-    padding: 9px 12px;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 7px 10px;
+    border: 1px solid #e2e8f0;
     color: #334155;
     vertical-align: top;
   }
@@ -147,11 +167,23 @@
   .data-table tr:hover {
     background: #f1f5f9;
   }
-  .data-table td:first-child {
-    text-align: center;
-    font-weight: 700;
-    color: #2563eb;
-    width: 50px;
+
+  /* 代码块与模板 */
+  pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 8pt;
+    line-height: 1.45;
+    overflow-x: auto;
+    font-family: Consolas, "Courier New", monospace;
+    page-break-inside: avoid;
+    margin: 14px 0;
+  }
+  code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 8.5pt;
   }
 
   /* 超链接样式与直达跳转 */
@@ -338,26 +370,20 @@
 <p>我们坚决摒弃“打通底层逻辑”、“全链路闭环赋能”等互联网黑话。全书 520 条建议，全部使用<strong>动词开头的具体动作</strong>，每一条建议都严格标注金钱毛利、工时人效、法律依据与实操限制。</p>
 <hr class="divider" />
 <h2 class="module-title">二、评价体系与口径定义</h2>
-<div class="entry-card" id="item-001">
-  <a id="item-1"></a>
-  <div class="entry-header"><span class="entry-num">#001</span><span class="entry-title">四维收益口径（统一量化）</span></div>
+<h3 class="section-subhead">（一）四维收益口径（统一量化）</h3>
 <ul>
   <li><strong>金钱维度</strong>：以“毛利率提升百分点”、“减少现金流净支出（万元/年）”、“规避罚款与行政处罚金额”为绝对衡量尺度。</li>
   <li><strong>时间与精力维度</strong>：以“单项业务端到端工时缩短（小时）”、“岗位人效比（人均创收）”、“自动化替代率（%）”为衡量尺度。</li>
   <li><strong>企业寿命与资产维度</strong>：以“企业内部数据资产沉淀率”、“业务飞轮自强化周期”、“客户留存与生命周期总价值（LTV）”为衡量尺度。</li>
   <li><strong>合规与人身自由维度</strong>：以“民商事违约金防范”、“劳动仲裁败诉风险清零”、“行政下架处罚出罪”、“法定代表人/实控人刑事追责隔离”为生死红线衡量尺度。</li>
 </ul>
-</div>
-<div class="entry-card" id="item-002">
-  <a id="item-2"></a>
-  <div class="entry-header"><span class="entry-num">#002</span><span class="entry-title">A/B/C 证据等级分类</span></div>
+<h3 class="section-subhead">（二）A/B/C 证据等级分类</h3>
 <ul>
   <li><strong>A 级证据（法律与顶层权威）</strong>：现行有效的国家法律法规（如《公司法》《网络安全法》《刑法》）、网信办/市监局/发改委官方规范性文件、最高人民法院指导案例。</li>
   <li><strong>B 级证据（学术实证与顶级工业实践）</strong>：NeurIPS、ICLR、ACL、KDD 等顶会发表并经过同行评审的量化实验论文；头部云厂商（如阿里云、腾讯云、Google Cloud）官方技术白皮书公布的生产环境指标。</li>
   <li><strong>C 级证据（企业一线实测与昆仑增长沙盘）</strong>：由昆仑增长数字化咨询团队在 50+ 家年营收 5000 万至 10 亿规模实体企业一线验证的真实财务复盘与工程落地实测参数。</li>
 </ul>
 <hr class="divider" />
-</div>
 <h2 class="module-title">三、20 大核心业务痛点与条目速查表</h2>
 <div class="table-container"><table class="data-table">
   <thead><tr>
@@ -722,8 +748,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val"> Excessive Agency 超额权限风险)。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">AI 调用的数据库连接必须严格限定为从库（Read-Only），所有涉及写入与删除操作必须通过预置防注入存储过程并由人工双重鉴权。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二：法律与合规红线（第 011 - 020 条）</h2>
 <div class="entry-card" id="item-011">
   <a id="item-11"></a>
@@ -799,8 +825,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《网络安全法》第二十一条第三款；GB/T 22239-2019《信息安全技术 网络安全等级保护基本要求》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">检索前进行鉴权预过滤（Pre-Filtering），严禁检索出内容后再让大模型做“身份判断”，模型无法防御恶意越权 Prompt 越狱。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块三：知识产权与商业机密（第 016 - 025 条）</h2>
 <div class="entry-card" id="item-016">
   <a id="item-16"></a>
@@ -876,8 +902,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val"> Prompt Injection 提示词注入攻击防御标准指南)。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">绝对不要把私有数据库密码或内部系统 Secret 密钥直接写在 Prompt 文本里，必须走系统环境变量与 KMS 密钥管理。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块四：算力与财务账单避坑（第 021 - 040 条）</h2>
 <div class="entry-card" id="item-021">
   <a id="item-21"></a>
@@ -953,8 +979,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-c">C 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">昆仑增长 30 家企业迁移实测数据：从包租 4 台 A100 转为 Serverless 端点后，月算力开销从 3.6 万降至 5200 元。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">需关注冷启动（Cold Start）延迟，对高频实时客服场景保持 1 个低配常驻容器保活即可。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-026">
   <a id="item-26"></a>
   <div class="entry-header"><span class="entry-num">#026</span><span class="entry-title">实施 Prompt 动态语义剪枝压缩（LLMLingua 算法）</span></div>
@@ -1232,8 +1258,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-c">C 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">昆仑增长短视频运营实测：分析 300 条汽车与大健康视频重构脚本，平均完播率提升 28 个百分点。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">严禁直接原样洗稿，必须在 Prompt 中要求“保留论证逻辑推进节奏，全量替换核心事实、主体身份与结论表达”。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-044">
   <a id="item-44"></a>
   <div class="entry-header"><span class="entry-num">#044</span><span class="entry-title">采用数字人视频生成流水线低成本日更矩阵账号</span></div>
@@ -1293,8 +1319,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-c">C 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">昆仑增长投流客户（服饰与小家电品类）A/B 测试：网格化批量测款使爆款跑通周期由 14 天缩短至 3 天。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">对消耗跑出超额 ROI 的头部素材，必须转入人工复核通道核实广告法合规，避免因 AI 生成涉嫌夸大极限词遭市监局处罚。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-048">
   <a id="item-48"></a>
   <div class="entry-header"><span class="entry-num">#048</span><span class="entry-title">建立广告投放落地页 AI 动态 A/B 测试与千人千面痛点文案实时组装</span></div>
@@ -1414,8 +1440,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">企业微信私域流量运营白皮书；社群粘性与定时推送相关性实验。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">早报内容必须精简干练，严禁植入过多硬广销售话术，保持客观纯粹的知识干货调性。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块六：广告投放测款与视觉资产工业化（第 056 - 070 条）</h2>
 <div class="entry-card" id="item-056">
   <a id="item-56"></a>
@@ -1506,8 +1532,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val"> Generative Engine Optimization》实证测试：结构化引用使大模型推荐展示率提升 30%~40%。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">重点标注 <code>Organization</code>、<code>Product</code>、<code>Review</code> 和 <code>FAQPage</code> 字段，且内容必须与网页呈现文本严格一致，严禁埋设隐藏欺骗性关键字。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-062">
   <a id="item-62"></a>
   <div class="entry-header"><span class="entry-num">#062</span><span class="entry-title">建立主流大模型（GPT/DeepSeek/Kimi/文心）品牌提及率主动监测探针</span></div>
@@ -1642,8 +1668,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">多触点归因（MTA）营销度量模型；现代数字化营销渠道转化分析实务。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">对于勾选 AI 推荐的高净值潜在客户，销售跟进首要话术应直接对齐该客户在 AI 对话中关心的核心诉求痛点。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块七：GEO（生成式引擎优化）与搜索流量重构（第 071 - 085 条）</h2>
 <div class="entry-card" id="item-071">
   <a id="item-71"></a>
@@ -1674,8 +1700,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">工业和信息化部电子第五研究所《数字化招投标合规与智能辅助评审实践指南》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">财务审计报告、法定代表人授权委托书等带章核心原件必须由专人独立物理核对，严禁完全信赖 OCR 识别结果。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-073">
   <a id="item-73"></a>
   <div class="entry-header"><span class="entry-num">#073</span><span class="entry-title">部署销售通话实时流式转写与“抗拒话术智能小抄”</span></div>
@@ -1795,8 +1821,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-c">C 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">昆仑增长 B2B 售前效能沙盘数据：标准化结构方案生成后，客户提案接受度提升 29 个百分点。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">PPT 内的财务测算模型与投资回报率公式必须由经过财务合规验证的脚本自动填充，严禁大模型随意编造不可实现的节约承诺。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-081">
   <a id="item-81"></a>
   <div class="entry-header"><span class="entry-num">#081</span><span class="entry-title">部署销售电话录音核心痛点与抗拒标签自动化打标流水线</span></div>
@@ -1871,8 +1897,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">Google Search Central 官方文档关于结构化内容与大型实用长尾页面的抓取规范指南。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">严禁全自动化生成毫无价值的垃圾伪原创页面，每个页面必须包含真实的规格参数表、高清图纸与真实库存状态。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块八：AI SDR 与销售全流程自动化推进（第 086 - 099 条）</h2>
 <div class="entry-card" id="item-086">
   <a id="item-86"></a>
@@ -2118,8 +2144,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">ACM SIGSOFT 软件工程国际研讨会论文《Code Context Optimization via Abstract Syntax Tree Slicing for LLM Coding》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">避免单纯依赖文本行数切割，跨文件调用关系必须结合语义符号表（Symbol Table）做关联。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-102">
   <a id="item-102"></a>
   <div class="entry-header"><span class="entry-num">#102</span><span class="entry-title">部署 Git Commit 自动触发的 AI 差异审查与安全规范 Lint 流水线</span></div>
@@ -2254,8 +2280,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">DevOps 效能度量与根因分析工程实践；AIOps 智能运维技术白皮书。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">日志上传大模型前必须经过内网脱敏模块，自动过滤掉环境变量中的内部服务器 IP、数据库账号密码及 Token。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十：企业级高可用 RAG（检索增强生成）实战（第 111 - 120 条）</h2>
 <div class="entry-card" id="item-111">
   <a id="item-111"></a>
@@ -2286,8 +2312,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val"> Parent Document Retriever and Semantic Chunking Evaluation》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">对于包含大量三线表的行业标准和财务报告，必须在切分前转为带表头上下文的结构化 Markdown 或 HTML Table，严禁将表格拆碎。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-113">
   <a id="item-113"></a>
   <div class="entry-header"><span class="entry-num">#113</span><span class="entry-title">部署基于版面分析（Layout Analysis）与表格还原的高精度 PDF 解析引擎</span></div>
@@ -2407,8 +2433,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">微软研究院 GraphRAG 论文与官方开源技术规范；知识图谱在现代智能问答系统中的深度应用。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">图谱构建应聚焦于高价值核心实体与强关联关系，严禁过度抽取低信噪比边缘实体导致图数据库过度膨胀。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十一：企业级 Agent 与有限状态机（FSM）工作流（第 121 - 130 条）</h2>
 <div class="entry-card" id="item-121">
   <a id="item-121"></a>
@@ -2439,8 +2465,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">IETF RFC 7395 规范标准；《银行卡收单业务管理办法》关于交易防重与资金结算一致性要求。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">涉及金额变动、库存扣减、客户通知等具有不可逆副作用（Side Effect）的外部工具，幂等性键缓存时间不得低于 24 小时。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-123">
   <a id="item-123"></a>
   <div class="entry-header"><span class="entry-num">#123</span><span class="entry-title">部署基于 RAG Triad（三元组）的知识库自动化量化评估流水线</span></div>
@@ -2744,8 +2770,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">财政部、税务总局《关于明确增值税小规模纳税人减免增值税等政策的公告》（2023年第1号）。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">开票节奏规划必须基于真实业务交付时点，严禁人为无真实交易凭空开具发票。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十三：HR、用工合规与劳动仲裁防御（第 143 - 155 条）</h2>
 <div class="entry-card" id="item-143">
   <a id="item-143"></a>
@@ -2941,8 +2967,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">最高人民法院《关于审理劳动争议案件适用法律问题的解释（一）》第三十八条。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">银行转账备注栏必须严格注明“【某某年某月】竞业限制经济补偿金”，严禁备注为“咨询费”、“补贴”或空白，防止仲裁中被对方抗辩为其他性质款项。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十四：法务与合同审查红线库（第 156 - 168 条）</h2>
 <div class="entry-card" id="item-156">
   <a id="item-156"></a>
@@ -3138,8 +3164,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国民法典》第五百四十六条（债权转让通知）、第五百五十一条（债务转移经债权人同意）。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">债权转让通知一旦送达债务人即不可撤销，通知书必须明确转让金额、受让人银行账户与原合同编号。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十五：日常协同、立项三原则与组织考核（第 169 - 180 条）</h2>
 <div class="entry-card" id="item-169">
   <a id="item-169"></a>
@@ -3549,8 +3575,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">亚马逊官方仓储费阶梯费率白皮书；Supply Chain Dive 滞销库存周转管理分析报告。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">清仓价格最低不得击穿当期海外弃置销毁手续费成本，避免卖得越多亏得越多。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十七：传统零售与连锁门店（第 196 - 210 条）</h2>
 <div class="entry-card" id="item-196">
   <a id="item-196"></a>
@@ -3776,8 +3802,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-c">C 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">昆仑增长零售数字化沙盘复盘：某 50 家连锁便利店私域分层后，单客月均贡献销售额从 42 元提升至 68 元。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">社群推送频次每日上限不得超过 2 条，且必须避开顾客早晚通勤与深夜休息时段。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十八：离散制造与车间一线（第 211 - 225 条）</h2>
 <div class="entry-card" id="item-211">
   <a id="item-211"></a>
@@ -4003,8 +4029,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-c">C 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">昆仑增长传统离散机械制造客户实操：堵住代刷工单漏洞后，车间计件总支出下降 8.3%，人均真实产出提升 12%。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">发现报工异常后应给予工人在系统端发起申诉的通道，由车间调度员现场复核实际工件实物条码方可解锁。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块十九：专业服务业（咨询、审计、律所）（第 226 - 240 条）</h2>
 <div class="entry-card" id="item-226">
   <a id="item-226"></a>
@@ -4759,8 +4785,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-b">B 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val"> A Graph RAG Approach to Query-Focused Summarization》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">实体提取必须经过严格的实体对齐与消歧（Entity Disambiguation），防止同名不同人（如两个“李伟”）被错误合并为一个节点。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二十一：高阶企业智能体与业务状态机（第 276 - 285 条）</h2>
 <div class="entry-card" id="item-276">
   <a id="item-276"></a>
@@ -4911,8 +4937,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国数据安全法》第二十七条；RFC 8446 (TLS 1.3) 传输安全工业标准。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">服务证书必须由内部私有 CA 统一签发并配置自动轮转策略，严禁在代码中硬编码自签名过期证书。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二十二：大客户商业攻防与复杂博弈深水区（第 286 - 300 条）</h2>
 <div class="entry-card" id="item-286">
   <a id="item-286"></a>
@@ -5063,8 +5089,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国公司法》（2024最新版）第二百二十条、第二百二十二条（公司合并后债权债务承继规定）；最高人民法院破产与并购审判指导意见。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">并购协议中必须设立大额“对赌赔偿准备金（Escrow Account）”，将至少 20% 的收购尾款锁定在银行托管账户中保留 12 个月以上，用于冲抵交割后新暴露的历史隐形债务。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <div class="entry-card" id="item-296">
   <a id="item-296"></a>
   <div class="entry-header"><span class="entry-num">#296</span><span class="entry-title">建立战略大客户“采购周期季节性规律与预算突击花光时间窗口嗅探”</span></div>
@@ -5139,8 +5165,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国反不正当竞争法》第十一条（禁止损害竞争对手商业信誉、商品声誉）；《刑法》第二百二十一条（损害商业信誉、商品声誉罪）。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">向公安报案前必须在公证处监督下对水军发帖网页与资金转账线索进行现场公证存证，确保全链条证据具备刑事司法认定效力。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二十三：工业生产级长尾工程防御大绝学（第 301 - 340 条）</h2>
 <div class="entry-card" id="item-301">
   <a id="item-301"></a>
@@ -5741,9 +5767,9 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国数据安全法》第二十七条；国家保密局标准 BMB21-2007《涉及国家秘密的载体销毁与审定管理规定》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">物理销毁过程必须由公司法务主管与保密专员双人在场监督、称重并签署《涉密数据介质销毁确认单》永久归档。</span></div>
+</div>
 <hr class="divider" />
 <p><em>(至此，第六卷深水区高阶工程实战共 100 条工业级建议已全部地毯式展开铺满，严格对齐第 241 - 340 条编号，毫无遗漏。)</em></p>
-</div>
 <div class="volume-break"></div><h1 class="volume-title">第七卷：决战收官卷：法务、裁员与出罪（第 341 - 520 条）</h1>
 <div class="quote-block"><strong>昆仑增长 出品</strong> | 真正的底牌绝学。在企业下行周期、组织剧变、财务风暴与债务纠纷中，守住股东身家、人身自由与东山再起的火种。</div>
 <hr class="divider" />
@@ -6347,8 +6373,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国反不正当竞争法》第三十二条；《中华人民共和国民事诉讼法》第一百零三条、第一百零四条；《最高人民法院关于审查知识产权纠纷行为保全案件适用法律若干问题的规定》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">申请诉前禁令必须提供初步证据证明情况紧急（不采取保全将导致难以弥补的损害），并依法提供财产担保，担保可采用诉讼保全责任保险以极低保费撬动。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二十五：金税四期穿透与税务稽查刑事熔断（第 381 - 430 条）</h2>
 <div class="entry-card" id="item-381">
   <a id="item-381"></a>
@@ -7099,8 +7125,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">国家税务总局关于进一步完善实名办税有关事项的通知；《中华人民共和国税收征收管理法》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">交接清单中必须详列所交接的账册起止年度、未结纳税争议事项、金税盘与税控设备移交记录，由法定代表人、新任财务负责人三方签字并扫描存证。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二十六：安全生产、环保风控与数据出境刑责防范（第 431 - 475 条）</h2>
 <div class="entry-card" id="item-431">
   <a id="item-431"></a>
@@ -7776,8 +7802,8 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国安全生产法》第五十四条、第一百一十条；《安全生产责任保险实施办法》。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">安责险属于国家法定强制性保险，严禁以工伤保险或普通的团体意外险替代安责险，未按规定投保的高危行业企业将面临刚性行政处罚。</span></div>
-<hr class="divider" />
 </div>
+<hr class="divider" />
 <h2 class="module-title">模块二十七：挂名法人脱钩出罪与债务责任隔离大绝学（第 476 - 520 条）</h2>
 <div class="entry-card" id="item-476">
   <a id="item-476"></a>
@@ -8453,27 +8479,22 @@
   <div class="field-row field-evidence"><span class="field-label">⚖️ 证据分级</span><span class="badge badge-a">A 级</span></div>
   <div class="field-row field-source"><span class="field-label">📜 法条/依据</span><span class="field-val">《中华人民共和国民法典》第一条；《中华人民共和国公司法》第一条；《中华人民共和国宪法》第三十三条。</span></div>
   <div class="field-row field-notes"><span class="field-label">💡 实战避坑</span><span class="field-val">企业是法人的企业，人生是自己的史诗；善用 AI 与现代法治工具箱，方得基业长青，立于不败之地。</span></div>
+</div>
 <hr class="divider" />
 <p><em>(至此，全书 520 条全模块工业级建议、八大分卷、三大长文附录已全部地毯式展开落地，无任何注水，格式 100% 对齐《高性价比人生指南》开源标准。)</em></p>
-</div>
 <div class="volume-break"></div><h1 class="volume-title">附录篇：三大工业级工具表单与决策模板</h1>
 <div class="quote-block"><strong>昆仑增长 出品</strong></div>
 <hr class="divider" />
 <h2 class="module-title">附录一：企业自建 GPU 机房 vs 云端商业 API 5年全生命周期 TCO 精密对比测算表</h2>
 <p>企业在做 AI 预算时，最大的幻觉就是把“买 8 张显卡的钱”等同于“自建算力的总成本”。本表按标准 IDC 机房建设规范与 5 年折旧周期，还原真实企业 TCO（Total Cost of Ownership）。</p>
-<div class="entry-card" id="item-001">
-  <a id="item-1"></a>
-  <div class="entry-header"><span class="entry-num">#001</span><span class="entry-title">测算基准模型假设</span></div>
+<h3 class="section-subhead">一、测算基准模型假设</h3>
 <ul>
   <li><strong>企业规模</strong>：年营收 1~3 亿人民币，中型制造/跨境/科技公司，常态并发需求约 50~100 QPS（日均处理约 500 万~1000 万 Token，峰值 100 QPS）。</li>
   <li><strong>自建方案（On-Premise）</strong>：采购 2 台 8 卡 H800 / 910B 级高密度 GPU 服务器（共 16 卡），配置 400G InfiniBand 交换机，自建或托管于 T3 级标准机房。</li>
   <li><strong>云端商业 API 方案（Cloud Serverless API）</strong>：采用 DeepSeek-V3/R1 / 智谱 GLM-4 / 阿里 Qwen 等商用云端模型 API，按实际 Token 用量及 Prompt Caching 折扣付费。</li>
 </ul>
 <hr class="divider" />
-</div>
-<div class="entry-card" id="item-002">
-  <a id="item-2"></a>
-  <div class="entry-header"><span class="entry-num">#002</span><span class="entry-title">5 年综合 TCO 对比清单（单位：万元人民币）</span></div>
+<h3 class="section-subhead">二、5 年综合 TCO 对比清单（单位：万元人民币）</h3>
 <div class="table-container"><table class="data-table">
   <thead><tr>
     <th>成本维度</th>
@@ -8568,17 +8589,13 @@
   </tr>
 </tbody></table></div>
 <hr class="divider" />
-</div>
-<div class="entry-card" id="item-003">
-  <a id="item-3"></a>
-  <div class="entry-header"><span class="entry-num">#003</span><span class="entry-title">自建 vs 云端 决策分水岭速查公式</span></div>
+<h3 class="section-subhead">三、自建 vs 云端 决策分水岭速查公式</h3>
 <p>当且仅当满足以下<strong>全部三个条件</strong>时，自建机房才有经济学意义：</p>
 <p>1. <strong>日均稳定 Token 吞吐量</strong> 达到 <strong>20 亿 Token 以上</strong>，且白天夜晚算力利用率均高于 85%（无波谷浪费）；</p>
 <p>2. <strong>法律合规硬性约束</strong>：属于《数据安全法》核心数据或《反间谍法》涉密军工/金融核心交易，外网断绝物理连接；</p>
 <p>3. <strong>团队拥有常态化 LLMOps 研发能力</strong>：无需外部高价交付团队，自身具备 Triton 算子优化与显存碎片整理能力。</p>
 <div class="quote-block"><strong>结论</strong>：凡年利润低于 3000 万的企业，自建私有化机房 99% 沦为向供应商与机房电力公司利益输送的负资产，建议 100% 走公有云端 API 加端到端客户端加密方案。</div>
 <hr class="divider" />
-</div>
 <h2 class="module-title">附录二：生成式 AI 算法备案与安全评估全流程自查对照表</h2>
 <p>依据《互联网信息服务深度合成管理规定》《生成式人工智能服务管理暂行办法》及《人工智能生成合成内容标识办法》（2025年9月1日生效），企业在上线面向公众的 AI 产品前必须完成以下 8 大合规闭环。</p>
 <div class="table-container"><table class="data-table">
