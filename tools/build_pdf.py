@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-昆仑增长：全书 520 条商业出版级 PDF 编译系统 (Book PDF Compiler)
-将 docs/ 下所有分卷聚合，并基于高审美 CSS 渲染为出版级 HTML，
-调用系统原生 Microsoft Edge 无头引擎导出印刷级 PDF 电子书。
+昆仑增长：全书 520 条商业出版级 PDF 编译系统 (Book PDF Compiler v3.0)
+支持 Markdown 复杂表格排版、文中条目超链接（点击直达对应条目）、
+A4 纸张页面优化、科技风双栏卡片。
 """
 
 import os
@@ -31,13 +31,15 @@ def find_edge():
 
 def md_to_html(md_text):
     """
-    轻量高效自研 Markdown 转 HTML 转换器（针对全书六段论深度定制）
+    轻量高效自研 Markdown 转 HTML 转换器（深度支持 Markdown 表格与六段论）
     """
     lines = md_text.split('\n')
     html_lines = []
     in_code_block = False
     in_list = False
     in_entry = False
+    in_table = False
+    table_has_header = False
 
     for line in lines:
         stripped = line.strip()
@@ -55,6 +57,39 @@ def md_to_html(md_text):
         if in_code_block:
             html_lines.append(html.escape(line))
             continue
+
+        # 表格处理
+        if stripped.startswith('|') and stripped.endswith('|'):
+            # 分割单元格
+            cells = [c.strip() for c in stripped.strip('|').split('|')]
+            # 检查是否为表头分隔行 (如 | :---: | :--- |)
+            if all(re.match(r'^:?-+:?$', c) for c in cells):
+                table_has_header = True
+                continue
+            
+            if not in_table:
+                if in_list:
+                    html_lines.append('</ul>')
+                    in_list = False
+                html_lines.append('<div class="table-container"><table class="data-table">')
+                in_table = True
+                table_has_header = False
+                # 第一行作为表头
+                html_lines.append('  <thead><tr>')
+                for c in cells:
+                    html_lines.append(f'    <th>{_format_inline(c)}</th>')
+                html_lines.append('  </tr></thead><tbody>')
+                continue
+            else:
+                html_lines.append('  <tr>')
+                for c in cells:
+                    html_lines.append(f'    <td>{_format_inline(c)}</td>')
+                html_lines.append('  </tr>')
+                continue
+        else:
+            if in_table:
+                html_lines.append('</tbody></table></div>')
+                in_table = False
 
         # 闭合列表
         if in_list and not stripped.startswith('- ') and not stripped.startswith('* ') and stripped != '':
@@ -80,14 +115,17 @@ def md_to_html(md_text):
             continue
 
         # 三级条目动作标题 (### 001. xxx)
-        if re.match(r'^###\s+(\d+)\.\s+(.+)', line):
+        m_item = re.match(r'^###\s+(\d+)\.\s+(.+)', line)
+        if m_item:
             if in_entry:
                 html_lines.append('</div>')
-            m = re.match(r'^###\s+(\d+)\.\s+(.+)', line)
-            num, title = m.groups()
+            num, title = m_item.groups()
+            num_int = int(num)
             in_entry = True
-            html_lines.append(f'<div class="entry-card" id="item-{num}">')
-            html_lines.append(f'  <div class="entry-header"><span class="entry-num">#{int(num):03d}</span><span class="entry-title">{html.escape(title)}</span></div>')
+            # 支持数字如 001 和 1 的双重定位锚点
+            html_lines.append(f'<div class="entry-card" id="item-{num_int:03d}">')
+            html_lines.append(f'  <a id="item-{num_int}"></a>')
+            html_lines.append(f'  <div class="entry-header"><span class="entry-num">#{num_int:03d}</span><span class="entry-title">{html.escape(title)}</span></div>')
             continue
 
         # 引用块
@@ -164,6 +202,8 @@ def md_to_html(md_text):
         if stripped != '':
             html_lines.append(f'<p>{_format_inline(stripped)}</p>')
 
+    if in_table:
+        html_lines.append('</tbody></table></div>')
     if in_list:
         html_lines.append('</ul>')
     if in_entry:
@@ -173,20 +213,21 @@ def md_to_html(md_text):
 
 def _format_inline(text):
     """
-    处理行内加粗、斜体、代码、链接
+    处理行内加粗、斜体、代码、链接（精准支持 Markdown 超链接 [文本](URL)）
     """
-    # 转义基础字符
     # 替换加粗 **text**
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     # 替换斜体 *text*
     text = re.sub(r'\*([^\*]+?)\*', r'<em>\1</em>', text)
     # 替换行内代码 `code`
     text = re.sub(r'`([^`]+?)`', r'<code>\1</code>', text)
+    # 替换 Markdown 超链接 [文字](链接)
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" class="doc-link">\1</a>', text)
     return text
 
 def compile_book():
     print("=" * 75)
-    print("🚀 启动《高性价比企业 AI 落地指南》全书商业出版级 PDF 编译系统...")
+    print("🚀 启动《高性价比企业 AI 落地指南》全书商业出版级 PDF 编译系统 (v3.0)...")
     print("=" * 75)
 
     doc_files = [
@@ -225,7 +266,7 @@ def compile_book():
 <style>
   @page {{
     size: A4;
-    margin: 20mm 15mm 20mm 15mm;
+    margin: 18mm 15mm 18mm 15mm;
     @bottom-center {{
       content: counter(page);
       font-size: 9pt;
@@ -318,7 +359,7 @@ def compile_book():
     margin-bottom: 25px;
   }}
   .module-title {{
-    font-size: 14pt;
+    font-size: 13pt;
     font-weight: 700;
     color: #1e3a8a;
     background: #f0fdf4;
@@ -327,6 +368,64 @@ def compile_book():
     margin-top: 30px;
     margin-bottom: 20px;
     border-radius: 0 6px 6px 0;
+  }}
+
+  /* 表格排版 (速查表/附录表) */
+  .table-container {{
+    width: 100%;
+    margin: 20px 0;
+    overflow-x: auto;
+    page-break-inside: auto;
+  }}
+  .data-table {{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    line-height: 1.45;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    overflow: hidden;
+  }}
+  .data-table th {{
+    background: #1e293b;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 10px 12px;
+    text-align: left;
+    border-top: none;
+  }}
+  .data-table td {{
+    padding: 9px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    vertical-align: top;
+  }}
+  .data-table tr:nth-child(even) {{
+    background: #f8fafc;
+  }}
+  .data-table tr:hover {{
+    background: #f1f5f9;
+  }}
+  .data-table td:first-child {{
+    text-align: center;
+    font-weight: 700;
+    color: #2563eb;
+    width: 50px;
+  }}
+
+  /* 超链接样式与直达跳转 */
+  a.doc-link {{
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dotted #2563eb;
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }}
+  a.doc-link:hover {{
+    color: #1d4ed8;
+    border-bottom: 1px solid #1d4ed8;
   }}
 
   /* 六段论卡片 */
@@ -338,6 +437,7 @@ def compile_book():
     margin-bottom: 18px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     page-break-inside: avoid; /* 绝不在单个卡片内部被强制断页 */
+    scroll-margin-top: 30px;
   }}
   .entry-header {{
     display: flex;
@@ -448,6 +548,14 @@ def compile_book():
     .entry-card {{
       box-shadow: none;
       border: 1px solid #cbd5e1;
+    }}
+    .data-table th {{
+      background: #334155 !important;
+      -webkit-print-color-adjust: exact;
+    }}
+    .data-table tr:nth-child(even) {{
+      background: #f8fafc !important;
+      -webkit-print-color-adjust: exact;
     }}
   }}
 </style>
