@@ -1,7 +1,7 @@
 # 高性价比企业 AI 落地指南 (How to Adopt AI with High Cost-Effectiveness)
 
 > **昆仑增长 出品** | 拒绝 PPT 空话套话，520 条只讲法条、代码、算力账单与真实毛利的工业级企业 AI 落地内参。
-> 格式 100% 对齐开源神作《高性价比人生指南》，六段论展开、四维收益量化、绝不跳号、绝不注水。
+> 独创六段论工业级实战模型，四维收益深度量化，绝不跳号、绝不注水。
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/AIMarshallLee/kunlun-ai-handbook?style=social)](https://github.com/AIMarshallLee/kunlun-ai-handbook)
@@ -9,7 +9,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/AIMarshallLee/kunlun-ai-handbook/pulls)
 
 ### 📥 完整版 PDF 电子书直接下载：
-👉 **[点击此处直接下载《高性价比企业 AI 落地指南》全本完整版.pdf (7.34 MB 高清印刷版)](https://raw.githubusercontent.com/AIMarshallLee/kunlun-ai-handbook/main/docs/%E9%AB%98%E6%80%A7%E4%BB%B7%E6%AF%94%E4%BC%81%E4%B8%9AAI%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97_%E5%85%A8%E6%9C%AC%E5%AE%8C%E6%95%B4%E7%89%88.pdf)** 
+👉 **[点击此处直接下载《高性价比企业 AI 落地指南》全本完整版.pdf (7.86 MB 高清印刷版)](https://raw.githubusercontent.com/AIMarshallLee/kunlun-ai-handbook/main/docs/%E9%AB%98%E6%80%A7%E4%BB%B7%E6%AF%94%E4%BC%81%E4%B8%9AAI%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97_%E5%85%A8%E6%9C%AC%E5%AE%8C%E6%95%B4%E7%89%88.pdf)** 
 *(右键另存为，或点击直接下载保存)*
 
 ---
@@ -21,7 +21,7 @@
 2. **“法盲式狂奔”的合规与人身自由陷阱**：员工随意将未脱敏的核心代码与财务数据喂入公共模型，触犯《反不正当竞争法》《刑法》第二百一十九条侵犯商业机密罪；面向公众上线 AI 功能却未做算法备案，被网信办下架封禁；
 3. **“数字形式主义”的 PPT 伪需求**：把大模型当聊天玩具，不仅没有减少哪怕一个编制，反而让基层员工陷入无穷无尽的“人工给 AI 擦屁股”修改噩梦。
 
-**本书遵循《高性价比人生指南》开源项目的极简、硬核格式与精神：**
+**本书坚持极简、硬核、可执行的实战方法论：**
 - **每一条建议均为动词开头的具体操作动作**，拒绝抽象概念；
 - **每一条建议严格量化四大收益**：金钱毛利、时间人效、企业资产寿命、合规与人身自由；
 - **每一条建议均标注 A/B/C 证据等级与实证来源**（国家现行法条、顶级顶会学术论文、官方执法裁判文书）；
