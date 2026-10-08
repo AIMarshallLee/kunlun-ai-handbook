@@ -8,6 +8,10 @@
 [![Audit: 520 Passed](https://img.shields.io/badge/CI%20Audit-520%2F520%20Passed-brightgreen.svg)](audit_all_520.py)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/AIMarshallLee/kunlun-ai-handbook/pulls)
 
+### 📥 完整版 PDF 电子书直接下载：
+👉 **[点击此处直接下载《高性价比企业 AI 落地指南》全本完整版.pdf (7.34 MB 高清印刷版)](https://raw.githubusercontent.com/AIMarshallLee/kunlun-ai-handbook/main/docs/%E9%AB%98%E6%80%A7%E4%BB%B7%E6%AF%94%E4%BC%81%E4%B8%9AAI%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97_%E5%85%A8%E6%9C%AC%E5%AE%8C%E6%95%B4%E7%89%88.pdf)** 
+*(右键另存为，或点击直接下载保存)*
+
 ---
 
 ## 🎯 本书宗旨
