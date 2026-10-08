@@ -554,6 +554,15 @@ def compile_book():
     book_body = '\n'.join(all_html_sections)
     toc_html = generate_toc_html()
 
+    try:
+        git_res = subprocess.run(["git", "rev-parse", "--short", "HEAD"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=ROOT_DIR)
+        git_commit = git_res.stdout.strip() or "31da1c2"
+    except Exception:
+        git_commit = "31da1c2"
+
+    from datetime import datetime
+    build_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+
     # 顶奢排版 CSS 样式
     full_html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -696,6 +705,50 @@ def compile_book():
     font-size: 7.5pt;
     color: #64748b;
   }}
+
+  /* 封面版本与联系方式卡片 (对齐高端出版物标准) */
+  .cover-meta-box {{
+    margin-top: 26px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 8.5pt;
+    line-height: 1.6;
+    color: #475569;
+  }}
+  .cover-meta-box .meta-line {{
+    margin-bottom: 4px;
+  }}
+  .cover-meta-box .meta-line:last-child {{
+    margin-bottom: 0;
+  }}
+  .cover-meta-box .meta-stamp {{
+    font-size: 8pt;
+    color: #64748b;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+  }}
+  .cover-meta-box .wechat-badge {{
+    color: #0f172a;
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+    font-size: 9pt;
+  }}
+  .cover-link {{
+    color: #2563eb;
+    text-decoration: underline;
+    font-weight: 600;
+  }}
+  .cover-link:hover {{
+    color: #1d4ed8;
+  }}
+
   .cover-footer {{
     display: flex;
     justify-content: space-between;
@@ -1102,11 +1155,19 @@ def compile_book():
         <div class="spec-sub">自建机房 vs 商业 API 对比</div>
       </div>
     </div>
+
+    <!-- 实时版本、在线直达与编著者微信联系方式 (MarshallPD) -->
+    <div class="cover-meta-box">
+      <div class="meta-line meta-stamp">生成于 {build_time} (北京时间) · 正文提交 <strong>{git_commit}</strong></div>
+      <div class="meta-line">💬 编著者微信：<strong class="wechat-badge">MarshallPD</strong>（商业咨询 · 技术交流 · 方案落地）</div>
+      <div class="meta-line">正文每天都在持续迭代，以在线版为准：<a href="https://github.com/AIMarshallLee/kunlun-ai-handbook" class="cover-link">https://github.com/AIMarshallLee/kunlun-ai-handbook</a></div>
+      <div class="meta-line">在线检索、配套工具与本 PDF 的最新下载都在 <a href="https://github.com/AIMarshallLee/kunlun-ai-handbook/tree/main/docs" class="cover-link">https://github.com/AIMarshallLee/kunlun-ai-handbook/tree/main/docs</a></div>
+    </div>
   </div>
 
   <div class="cover-footer">
     <div class="cover-meta-left">
-      <strong>编著团队：</strong>昆仑增长 数字化咨询团队
+      <strong>编著团队：</strong>昆仑增长 数字化咨询团队 · 联系微信：<strong>MarshallPD</strong>
     </div>
     <div class="cover-meta-right">
       <strong>开源许可：</strong>基于 CC BY-NC-SA 4.0 协议发布（自用免费 · 严禁商用）

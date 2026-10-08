@@ -9,8 +9,12 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/AIMarshallLee/kunlun-ai-handbook/pulls)
 
 ### 📥 完整版 PDF 电子书直接下载：
-👉 **[点击此处直接下载《高性价比企业 AI 落地指南》全本完整版.pdf (7.86 MB 高清印刷版)](https://raw.githubusercontent.com/AIMarshallLee/kunlun-ai-handbook/main/docs/%E9%AB%98%E6%80%A7%E4%BB%B7%E6%AF%94%E4%BC%81%E4%B8%9AAI%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97_%E5%85%A8%E6%9C%AC%E5%AE%8C%E6%95%B4%E7%89%88.pdf)** 
+👉 **[点击此处直接下载《高性价比企业 AI 落地指南》全本完整版.pdf (高清印刷版)](https://raw.githubusercontent.com/AIMarshallLee/kunlun-ai-handbook/main/docs/%E9%AB%98%E6%80%A7%E4%BB%B7%E6%AF%94%E4%BC%81%E4%B8%9AAI%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97_%E5%85%A8%E6%9C%AC%E5%AE%8C%E6%95%B4%E7%89%88.pdf)** 
 *(右键另存为，或点击直接下载保存)*
+
+### 💬 编著者微信与企业落地深度咨询：
+- **微信联系**：`MarshallPD`（添加请备注：**企业AI落地 / 读者交流 / 商务合作**）
+- **核心交流**：企业 AI 私有化选型评估、520 条落地诊断、算力账单审计与业务流程定制陪跑。
 
 ---
 
