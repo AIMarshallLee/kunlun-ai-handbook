@@ -469,7 +469,7 @@ def compile_book():
     <div class="cover-pill">全周期 TCO 测算</div>
   </div>
   <div class="cover-footer">
-    昆仑增长 数字化咨询团队 编著 · 2026 商业实战典藏版 · 基于 MIT 开源协议发布
+    昆仑增长 数字化咨询团队 编著 · 2026 商业实战典藏版 · 基于 CC BY-NC-SA 4.0 (非商业性使用) 许可协议发布
   </div>
 </div>
 

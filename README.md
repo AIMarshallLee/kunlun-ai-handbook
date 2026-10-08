@@ -3,7 +3,7 @@
 > **昆仑增长 出品** | 拒绝 PPT 空话套话，520 条只讲法条、代码、算力账单与真实毛利的工业级企业 AI 落地内参。
 > 格式 100% 对齐开源神作《高性价比人生指南》，六段论展开、四维收益量化、绝不跳号、绝不注水。
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/AIMarshallLee/kunlun-ai-handbook?style=social)](https://github.com/AIMarshallLee/kunlun-ai-handbook)
 [![Audit: 520 Passed](https://img.shields.io/badge/CI%20Audit-520%2F520%20Passed-brightgreen.svg)](audit_all_520.py)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/AIMarshallLee/kunlun-ai-handbook/pulls)
@@ -92,7 +92,9 @@ python tools/build_pdf.py
 
 ## ⚖️ 免责声明与知识产权
 
-- 本项目遵循 **MIT 许可证** 开源。
+- 本项目遵循 **[CC BY-NC-SA 4.0（知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议）](LICENSE)** 开源：
+  - **允许免费自用**：个人、开发者、民营实体企业可免费阅读、学习并在企业内部非商业性实践使用；
+  - **严禁未经授权商用**：任何第三方未经昆仑增长官方书面授权，**严禁将本书内容用于出版印刷、商业付费培训课程、有偿咨询课件或二次打包售卖牟利**！
 - 本书所引用的法律法规（包括《中华人民共和国公司法》《劳动合同法》《刑法》《税收征收管理法》《数据安全法》《个人信息保护法》等）均为国家公开颁布的现行有效规范。
 - 涉及法律诉讼、劳动仲裁、刑事合规等极端场景时，请结合企业具体个案聘请执业律师或专业法律合规顾问，本书内容不构成针对特定个案的单独出庭辩护意见。
 
