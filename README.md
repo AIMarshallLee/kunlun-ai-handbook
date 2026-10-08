@@ -4,9 +4,9 @@
 > 格式 100% 对齐开源神作《高性价比人生指南》，六段论展开、四维收益量化、绝不跳号、绝不注水。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Awesome](https://awesome.re/badge.svg)](https://github.com/kunlun-growth/enterprise-ai-handbook)
+[![GitHub Stars](https://img.shields.io/github/stars/AIMarshallLee/kunlun-ai-handbook?style=social)](https://github.com/AIMarshallLee/kunlun-ai-handbook)
 [![Audit: 520 Passed](https://img.shields.io/badge/CI%20Audit-520%2F520%20Passed-brightgreen.svg)](audit_all_520.py)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/kunlun-growth/enterprise-ai-handbook/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/AIMarshallLee/kunlun-ai-handbook/pulls)
 
 ---
 
