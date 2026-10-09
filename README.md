@@ -94,10 +94,10 @@ python tools/build_pdf.py
 - 🛠️ 知识库轻量 RAG、TCO 算账工具及配套脚本的最新更新与答疑；
 - 🎙️ 每周企业 AI 真实场景案例拆解、选型军令状闭门直播。
 
-| 官方飞书交流群（推荐 · 永久有效） | 官方微信交流群 |
+| 飞书：昆仑增长 AI 交流群（推荐 · 永久有效） | 官方微信交流群 |
 | :---: | :---: |
-| <img src="docs/assets/feishu-group.jpg" width="220" alt="飞书公开交流群" /> | <img src="docs/assets/wechat-group.png" width="220" alt="微信技术交流群" /> |
-| **扫码直接加入飞书群**<br>*(免好友申请 · 永久有效 · 实时文件共享)* | **扫码添加微信进入讨论群**<br>*(请备注：AI落地指南)* |
+| <img src="docs/assets/feishu-group.jpg" width="220" alt="飞书：昆仑增长 AI 交流群" /> | <img src="docs/assets/wechat-group.png" width="220" alt="微信技术交流群" /> |
+| **扫码加入「昆仑增长 AI 交流群」**<br>*(免好友申请 · 永久有效 · 实时文件共享)* | **扫码添加微信进入讨论群**<br>*(请备注：AI落地指南)* |
 
 ---
 
